@@ -1,22 +1,12 @@
 # RAVEN
 
 
+<img width="500" height="500" alt="Raven_AIOS" src="https://github.com/user-attachments/assets/235fa737-9dbc-4db1-b5d4-f2f9376eb51a" />
 
-   ____  ___ _    _____ _   _
-  / __ \/   | |  / / _ \ | / /
- / /_/ / /| | | / /  __/ |/ /
-/ _, _/ ___ | |/ / \___/|   /
-/_/ |_/_/  |_|___/       |_/
-
-╭─────────────────────────────╮
-│           RAVEN             │
-│      AI OPERATING SYSTEM    │
-╰─────────────────────────────╯
+![RAVEN]
 
 
-<img width="1024" height="1024" alt="Raven_AIOS" src="https://github.com/user-attachments/assets/235fa737-9dbc-4db1-b5d4-f2f9376eb51a" />
-
-![RAVEN](docs/odysseus.jpg)
+(docs/odysseus.jpg)
 
 A self-hosted AI workspace -- meant to be the self-hosted version of the UI experience you get from ChatGPT and Claude. But with more jank and fun. Running on your own hardware, with your own data -- local-first, privacy-first, and no trojan.
 
