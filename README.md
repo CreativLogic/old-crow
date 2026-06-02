@@ -1,6 +1,13 @@
 # RAVEN
 ───────────────────────────────────────────────
- -->  RAVEN V-1.0
+██████╗  █████╗ ██╗   ██╗███████╗███╗   ██╗
+██╔══██╗██╔══██╗██║   ██║██╔════╝████╗  ██║
+██████╔╝███████║██║   ██║█████╗  ██╔██╗ ██║
+██╔══██╗██╔══██║╚██╗ ██╔╝██╔══╝  ██║╚██╗██║
+██║  ██║██║  ██║ ╚████╔╝ ███████╗██║ ╚████║
+╚═╝  ╚═╝╚═╝  ╚═╝  ╚═══╝  ╚══════╝╚═╝  ╚═══╝
+
+        AI OPERATING SYSTEM
 ───────────────────────────────────────────────
 <img width="1024" height="1024" alt="Raven_AIOS" src="https://github.com/user-attachments/assets/235fa737-9dbc-4db1-b5d4-f2f9376eb51a" />
 
@@ -57,8 +64,8 @@ pull request guidelines.
 
 ### Docker (recommended)
 ```bash
-git clone https://github.com/pewdiepie-archdaemon/odysseus.git
-cd odysseus
+git clone https://github.com/CreativLogic/RAVEN.git
+cd RAVEN
 cp .env.example .env       # optional, but recommended for explicit defaults
 docker compose up -d --build
 ```
@@ -69,8 +76,8 @@ only when you intentionally want LAN/reverse-proxy access.
 
 ### Native Linux / macOS
 ```bash
-git clone https://github.com/pewdiepie-archdaemon/odysseus.git
-cd odysseus
+git clone https://github.com/CreativLogic/RAVEN.git
+cd RAVEN
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
@@ -88,15 +95,15 @@ Docker on macOS cannot use the Metal GPU. For GPU-accelerated Cookbook on an
 M-series Mac, run Odysseus natively:
 
 ```bash
-git clone https://github.com/pewdiepie-archdaemon/odysseus.git
-cd odysseus
+git clone https://github.com/CreativLogic/RAVEN.git
+cd RAVEN
 ./start-macos.sh
 ```
 
 It launches at `http://127.0.0.1:7860`. To expose it to your phone over a trusted LAN/VPN such as Tailscale, bind all interfaces:
 
 ```bash
-ODYSSEUS_HOST=0.0.0.0 ./start-macos.sh
+RAVEN_HOST=0.0.0.0 ./start-macos.sh
 # then open http://<tailscale-ip>:7860
 ```
 
