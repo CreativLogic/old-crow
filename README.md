@@ -21,7 +21,7 @@
 
 
 
-A self-hosted AI workspace -- meant to be the self-hosted version of the UI experience you get from ChatGPT and Claude. But with more jank and fun. Running on your own hardware, with your own data -- local-first, privacy-first, and no trojan.
+A self-hosted AI agent workspace -- this is meant to be a combined UI experience similar to popular LLMs and their desktop coding counterparts. But more personalized, fun and easy to use. Running on your own hardware or api, with your own data -- local-first, privacy-first, and no trojan.
 
 ## Features
   - **Chat** -- chat with any local model or API; adding them is super simple.<br>　<sub>vLLM · llama.cpp · Ollama · OpenRouter · OpenAI</sub>
