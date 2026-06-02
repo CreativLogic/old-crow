@@ -1239,7 +1239,7 @@ export function showWelcomeScreen() {
 }
 
 // ── Dynamic action buttons (show 3 most recent, rest under ···) ──
-const _ACTION_RECENTS_KEY = 'odysseus-msg-actions-recent';
+const _ACTION_RECENTS_KEY = 'raven-msg-actions-recent';
 const _MAX_VISIBLE = 2;
 
 function _getRecentActions() {
@@ -1455,7 +1455,7 @@ export function createMsgFooter(msgElement) {
 /**
  * Create a footer row for a user message with action buttons (same system as AI footer).
  */
-const _USER_ACTION_RECENTS_KEY = 'odysseus-user-actions-recent';
+const _USER_ACTION_RECENTS_KEY = 'raven-user-actions-recent';
 
 function _getUserRecentActions() {
   try { return JSON.parse(localStorage.getItem(_USER_ACTION_RECENTS_KEY) || '[]'); } catch { return []; }
@@ -1627,7 +1627,7 @@ export function displayMetrics(messageElement, metrics) {
     const costStr = cost !== null ? `$${cost < 0.01 ? cost.toFixed(4) : cost.toFixed(3)}` : 'n/a';
     const speedStr = tps != null && tps !== 'undefined' ? `${tps} tok/s` : 'n/a';
     const totalTok = inputTokens + outputTokens;
-    const ctxColor = ctxPct >= 85 ? 'var(--red, #e06c75)' : ctxPct >= 70 ? '#ff9900' : 'var(--color-muted-alt, #6b7280)';
+    const ctxColor = ctxPct >= 85 ? 'var(--red, #00A8FF)' : ctxPct >= 70 ? '#ff9900' : 'var(--color-muted-alt, #6b7280)';
     const prepTime = metrics.agent_prep_time;
     const modelWaitTime = metrics.agent_model_wait_time;
     const prepBreakdown = metrics.agent_prep_breakdown || null;
@@ -1698,7 +1698,7 @@ export function displayMetrics(messageElement, metrics) {
     const r = 6, stroke = 1.5;
     const circ = 2 * Math.PI * r;
     const fill = circ * (ctxPct / 100);
-    const ctxColor = ctxPct >= 85 ? 'var(--red, #e06c75)' : ctxPct >= 70 ? '#ff9900' : 'var(--green, #98c379)';
+    const ctxColor = ctxPct >= 85 ? 'var(--red, #00A8FF)' : ctxPct >= 70 ? '#ff9900' : 'var(--green, #98c379)';
     ctxRing = document.createElement('span');
     ctxRing.className = 'ctx-ring';
     ctxRing.title = `${ctxPct}% context used — click for details`;
@@ -1754,7 +1754,7 @@ export function displayMetrics(messageElement, metrics) {
           compactMsg.className = 'msg msg-ai';
           const compactRole = document.createElement('div');
           compactRole.className = 'role';
-          compactRole.textContent = 'Odysseus';
+          compactRole.textContent = 'RAVEN';
           const compactBody = document.createElement('div');
           compactBody.className = 'body';
           compactBody.innerHTML = 'Compacting context <span class="compact-wave">▁▂▃▅▂▁</span>';
@@ -1987,7 +1987,7 @@ export function addMessage(role, content, modelName, metadata) {
     const isSlash = metadata?.source === 'slash';
     const isCompacted = metadata?.compacted;
     const resolvedModel = modelName || metadata?.model;
-    var _roleText = role === 'user' ? 'You' : (isSlash || isCompacted) ? 'Odysseus' : shortModel(resolvedModel);
+    var _roleText = role === 'user' ? 'You' : (isSlash || isCompacted) ? 'RAVEN' : shortModel(resolvedModel);
     if (role === 'assistant' && (metadata?.research || metadata?.research_clarification)) {
       _roleText += ' (Research)';
     }

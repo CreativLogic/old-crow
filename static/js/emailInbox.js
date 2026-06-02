@@ -11,8 +11,8 @@ import { applyEdgeDock } from './modalSnap.js';
 import { buildReplyAllCc } from './emailLibrary/replyRecipients.js';
 
 const API_BASE = window.location.origin;
-const _acct = () => window.__odysseusActiveEmailAccount
-  ? `&account_id=${encodeURIComponent(window.__odysseusActiveEmailAccount)}`
+const _acct = () => window.__ravenActiveEmailAccount
+  ? `&account_id=${encodeURIComponent(window.__ravenActiveEmailAccount)}`
   : '';
 
 const _emailSetupHint = () => '<div style="margin-top:6px;opacity:0.72;font-size:11px;">Setup: <span style="color:var(--accent,var(--red));">Settings &rsaquo; Integrations</span></div>';
@@ -213,7 +213,7 @@ function _maybeOpenFromHash() {
 // Tint helper — turns the urgent-email-scanner's max_score into a dot color.
 // Falls back to the default (blue / unset) when scanner is off or no urgent.
 function _urgencyColor(score) {
-  if (score >= 3) return 'var(--color-error, #e06c75)';   // red — urgent now
+  if (score >= 3) return 'var(--color-error, #00A8FF)';   // red — urgent now
   if (score === 2) return '#f0ad4e';                       // orange — reply soon
   return '';                                                // default (blue / theme)
 }
@@ -241,7 +241,7 @@ async function _refreshUnreadCount() {
     }
 
     // Compare highest unread UID to the last-seen threshold in localStorage
-    const lastSeen = parseInt(localStorage.getItem('odysseus-email-last-seen-uid') || '0', 10);
+    const lastSeen = parseInt(localStorage.getItem('raven-email-last-seen-uid') || '0', 10);
     const maxUid = Math.max(...emails.map(e => parseInt(e.uid, 10) || 0));
 
     // Only show dot if there's a new email above the threshold
@@ -276,7 +276,7 @@ export function markInboxAsSeen() {
         const emails = data.emails || [];
         if (emails.length > 0) {
           const maxUid = Math.max(...emails.map(e => parseInt(e.uid, 10) || 0));
-          localStorage.setItem('odysseus-email-last-seen-uid', String(maxUid));
+          localStorage.setItem('raven-email-last-seen-uid', String(maxUid));
         }
         const dot = document.getElementById('email-unread-dot');
         if (dot) dot.style.display = 'none';
@@ -495,7 +495,7 @@ function _createEmailItem(em) {
         if (k.endsWith(suffix)) {
           const v = us.per_uid[k] || {};
           const score = v.score || 0;
-          if (score >= 3) { _unreadColor = 'var(--color-error, #e06c75)'; _unreadTitle = 'Urgent — ' + (v.reason || 'needs reply now'); }
+          if (score >= 3) { _unreadColor = 'var(--color-error, #00A8FF)'; _unreadTitle = 'Urgent — ' + (v.reason || 'needs reply now'); }
           else if (score === 2) { _unreadColor = '#f0ad4e'; _unreadTitle = 'Reply soon — ' + (v.reason || ''); }
           break;
         }

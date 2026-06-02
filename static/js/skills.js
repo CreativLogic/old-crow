@@ -1207,7 +1207,7 @@ function _applyVerdictToHeader(card, verdict) {
     pass: 'var(--color-success, #4ade80)',
     needs_work: 'var(--color-warning, #f0ad4e)',
     inconclusive: 'var(--color-warning, #f0ad4e)',
-    fail: 'var(--color-danger, #e06c75)',
+    fail: 'var(--color-danger, #00A8FF)',
   }[verdict];
   // Audit dot removed at user request — strip any pre-existing one so the
   // post-audit live update doesn't leave a stale dot from an old render.
@@ -1240,7 +1240,7 @@ function _applyVerdictToHeader(card, verdict) {
       pass:       { bg: 'color-mix(in srgb, var(--color-success, #4ade80) 30%, transparent)', fg: 'var(--color-success, #4ade80)' },
       needs_work: { bg: 'color-mix(in srgb, var(--color-warning, #f0ad4e) 30%, transparent)', fg: 'var(--color-warning, #f0ad4e)' },
       inconclusive: { bg: 'color-mix(in srgb, var(--color-warning, #f0ad4e) 30%, transparent)', fg: 'var(--color-warning, #f0ad4e)' },
-      fail:       { bg: 'color-mix(in srgb, var(--color-danger, #e06c75) 30%, transparent)',  fg: 'var(--color-danger, #e06c75)' },
+      fail:       { bg: 'color-mix(in srgb, var(--color-danger, #00A8FF) 30%, transparent)',  fg: 'var(--color-danger, #00A8FF)' },
     }[verdict];
     // The status pill (draft / published) keeps its own colours now — the
     // verdict lives in a separate "checked" pill that's inserted next to it.

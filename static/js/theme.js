@@ -9,7 +9,7 @@ import { makeWindowDraggable } from './windowDrag.js';
 import { snapModalToZone } from './tileManager.js';
 
 export const THEMES = {
-  dark:       { bg:'#282c34', fg:'#9cdef2', panel:'#111111', border:'#355a66', red:'#e06c75' },
+  dark:       { bg:'#0D1B2A', fg:'#E8F4FF', panel:'#1A2E45', border:'#003380', red:'#00A8FF' },
   light:      { bg:'#f0ebe3', fg:'#5a5248', panel:'#faf6f0', border:'#d4cdc2', red:'#c47d5a' },
   midnight:   { bg:'#0d1117', fg:'#c9d1d9', panel:'#161b22', border:'#30363d', red:'#f85149' },
   paper:      { bg:'#faf8f5', fg:'#3b3836', panel:'#ffffff', border:'#d5d0c8', red:'#c5ac4a' },
@@ -32,8 +32,8 @@ export const THEMES = {
 };
 
 const DEFAULT_THEME = 'dark';
-const LS_KEY = 'odysseus-theme';
-const CUSTOM_THEMES_KEY = 'odysseus-custom-themes';
+const LS_KEY = 'raven-theme';
+const CUSTOM_THEMES_KEY = 'raven-custom-themes';
 
 const FONT_MAP = {
   mono: "'Fira Code', monospace",
@@ -159,7 +159,7 @@ function hslToHex(h, s, l) {
 function deriveSyntaxColors(colors) {
   const [fgH, fgS, fgL] = hexToHSL(colors.fg);
   const [bgH, bgS, bgL] = hexToHSL(colors.bg);
-  const [redH, redS, redL] = hexToHSL(colors.red || '#e06c75');
+  const [redH, redS, redL] = hexToHSL(colors.red || '#00A8FF');
   const isDark = bgL < 50;
   const codeBgL = isDark ? Math.max(bgL - 4, 0) : Math.min(bgL + 4, 100);
   return {
@@ -183,7 +183,7 @@ const ADV_KEYS = [
   { key: 'aiBubbleBg',         css: '--ai-bubble-bg',      label: 'AI Chat Bubble',   group: 'Chat Bubbles' },
   { key: 'bubbleBorder',       css: '--bubble-border',     label: 'Border Chat Bubble', group: 'Chat Bubbles' },
   { key: 'sidebarBg',          css: '--sidebar-bg',        label: 'Sidebar Bg',       group: 'Sidebar' },
-  { key: 'brandColor',         css: '--brand-color',       label: 'Odysseus Logo',    group: 'Sidebar' },
+  { key: 'brandColor',         css: '--brand-color',       label: 'RAVEN Logo',    group: 'Sidebar' },
   { key: 'hamburgerColor',     css: '--hamburger-color',   label: 'Hamburger Menu',   group: 'Sidebar' },
   { key: 'inputBg',            css: '--input-bg',          label: 'Input Bg',         group: 'Chat Input / Prompt Area' },
   { key: 'inputBorder',        css: '--input-border',      label: 'Input Border',     group: 'Chat Input / Prompt Area' },
@@ -196,7 +196,7 @@ const ADV_KEYS = [
 
 function computeAdvancedDefaults(colors) {
   const syn = deriveSyntaxColors(colors);
-  const red = colors.red || '#e06c75';
+  const red = colors.red || '#00A8FF';
   return {
     userBubbleBg: colors.bg,
     aiBubbleBg: colors.panel,
@@ -285,7 +285,7 @@ export function applyColors(colors) {
   }
 
   // Update favicon to match theme accent color
-  _updateFavicon(colors.red || '#e06c75');
+  _updateFavicon(colors.red || '#00A8FF');
 }
 
 // Per-route SVG shape registry — kept in sync with the inline favicon
@@ -1190,7 +1190,7 @@ export function initThemeUI() {
   // Keep the hex display chip in sync with whatever the picker reports.
   const _harmonyHex = document.getElementById('harmony-accent-hex');
   if (harmonyAccentEl && _harmonyHex) {
-    _harmonyHex.textContent = harmonyAccentEl.value || '#e06c75';
+    _harmonyHex.textContent = harmonyAccentEl.value || '#00A8FF';
     harmonyAccentEl.addEventListener('input', () => {
       _harmonyHex.textContent = harmonyAccentEl.value;
     });
@@ -1258,7 +1258,7 @@ export function initThemeUI() {
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = 'odysseus_' + (obj.name || 'theme') + '.json';
+      a.download = 'raven_' + (obj.name || 'theme') + '.json';
       a.click();
       URL.revokeObjectURL(url);
       newExp.innerHTML = '&#x2713; Downloaded!';
@@ -1791,7 +1791,7 @@ function _initPerlinFlow() {
   const _onResize = () => resize();
   window.addEventListener('resize', _onResize);
   function getColor() { const s = getComputedStyle(document.documentElement); return s.getPropertyValue('--bg-effect-color').trim() || s.getPropertyValue('--fg').trim() || '#9cdef2'; }
-  function getBg() { return getComputedStyle(document.documentElement).getPropertyValue('--bg').trim() || '#282c34'; }
+  function getBg() { return getComputedStyle(document.documentElement).getPropertyValue('--bg').trim() || '#0D1B2A'; }
   let _cachedBg = '', _fadeStyle = '';
   function getFade() {
     const bg = getBg();

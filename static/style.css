@@ -1,5 +1,5 @@
 /* ============================================ */
-/* Odysseus UI — Consolidated Stylesheet        */
+/* RAVEN UI — Consolidated Stylesheet        */
 /* ============================================ */
 
 
@@ -17,11 +17,11 @@
 
 :root {
   /* Core palette */
-  --bg: #282c34;
-  --fg: #9cdef2;
-  --panel: #111;
-  --border: #355a66;
-  --red: #e06c75;
+  --bg: #0D1B2A;
+  --fg: #E8F4FF;
+  --panel: #1A2E45;
+  --border: #003380;
+  --red: #00A8FF;
   /* Were `var(--green)` / `var(--warn)` — self-referential, so they
      resolved to invalid and every site fell back to its own literal
      (or, for sites with no fallback, painted as transparent/inherit).
@@ -30,16 +30,16 @@
   --warn: #f0ad4e;
 
   /* Syntax highlighting */
-  --hl-bg: #1e2228;
-  --hl-fg: #9cdef2;
-  --hl-keyword: #c678dd;
-  --hl-string: #e5c07b;
-  --hl-comment: #828997;
-  --hl-function: #61afef;
-  --hl-number: #d19a66;
-  --hl-builtin: #56b6c2;
-  --hl-variable: #abb2bf;
-  --hl-params: #a8c0d4;
+  --hl-bg: #0F1F33;
+  --hl-fg: #E8F4FF;
+  --hl-keyword: #4DCAFF;
+  --hl-string: #00A8FF;
+  --hl-comment: #2C4A6E;
+  --hl-function: #0066CC;
+  --hl-number: #4DCAFF;
+  --hl-builtin: #00A8FF;
+  --hl-variable: #E8F4FF;
+  --hl-params: #B8DDFF;
 
   /* Semantic colors */
   --color-error: #ff4444;
@@ -51,9 +51,9 @@
   --color-recording-hover: #d63031;
   --color-muted: #888;
   --color-muted-alt: #6b7280;
-  --color-accent: #00aaff;
-  --color-agent-active: #00ff00;
-  --color-brand-blue: #3b82f6;
+  --color-accent: #00A8FF;
+  --color-agent-active: #4DCAFF;
+  --color-brand-blue: #0066CC;
   --color-blind-orange: #ff9800;
   --color-save-green: var(--color-success);
   --color-link-hover: #66c7ff;
@@ -5476,7 +5476,7 @@ body.bg-pattern-sparkles {
     /* (legacy toolbar-toggle styles removed — now using .vis-* classes) */
 
     /* Demo highlight pulse */
-    .odysseus-highlight {
+    .raven-highlight {
       outline: 2px solid var(--accent, var(--red)) !important;
       outline-offset: 1px;
       box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent, var(--red)) 18%, transparent);
@@ -5604,7 +5604,7 @@ body.bg-pattern-sparkles {
     @media (prefers-reduced-motion: reduce) {
       .th-cursor, .th-modal-group, .th-zone { animation: none !important; }
     }
-    .odysseus-hl-label {
+    .raven-hl-label {
       position: absolute;
       top: -22px;
       left: 8px;
@@ -5957,7 +5957,7 @@ body.bg-pattern-sparkles {
     }
 /* SYNTAX HIGHLIGHTING — uses theme vars from style.css, no hardcoded overrides */
 .hljs { color: var(--hl-fg, #9cdef2); background: none !important; }
-pre { background: var(--code-bg, var(--hl-bg, #282c34)) !important; }
+pre { background: var(--code-bg, var(--hl-bg, #0D1B2A)) !important; }
 
     /* ---------- Search overlay (Ctrl+K command palette) ---------- */
     .search-overlay {
@@ -14718,7 +14718,7 @@ body.left-dock-active {
   height: 30px;
   min-height: 30px;
   font-size: 11px;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23e06c75' stroke-opacity='0.85' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='11' cy='11' r='8'/><line x1='21' y1='21' x2='16.65' y2='16.65'/></svg>");
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2300A8FF' stroke-opacity='0.85' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='11' cy='11' r='8'/><line x1='21' y1='21' x2='16.65' y2='16.65'/></svg>");
   background-repeat: no-repeat;
   background-position: 9px center;
   padding-left: 28px;
@@ -15319,8 +15319,8 @@ body:not(.email-doc-split-active) #email-lib-modal.email-lib-fullscreen:not(.mod
   color: var(--accent, var(--red));
 }
 .doclib-card-text-btn-danger {
-  color: var(--color-danger, #e06c75);
-  border-color: var(--color-danger, #e06c75);
+  color: var(--color-danger, #00A8FF);
+  border-color: var(--color-danger, #00A8FF);
 }
 .doclib-card-text-btn-danger:hover {
   color: #ff4d4d;
@@ -15536,8 +15536,8 @@ body:not(.email-doc-split-active) #email-lib-modal.email-lib-fullscreen:not(.mod
   border-color: var(--accent, var(--red));
 }
 .doclib-chat-delete-btn {
-  color: var(--color-danger, #e06c75);
-  border: 1px solid var(--color-danger, #e06c75);
+  color: var(--color-danger, #00A8FF);
+  border: 1px solid var(--color-danger, #00A8FF);
 }
 .doclib-chat-delete-btn:hover {
   color: #ff4d4d;
@@ -15845,21 +15845,21 @@ body:not(.email-doc-split-active) #email-lib-modal.email-lib-fullscreen:not(.mod
   color: var(--color-warning, #f0ad4e);
 }
 .skill-necessity-trivial {
-  background: color-mix(in srgb, var(--color-danger, #e06c75) 26%, transparent);
-  color: var(--color-danger, #e06c75);
-  border-color: color-mix(in srgb, var(--color-danger, #e06c75) 38%, transparent);
+  background: color-mix(in srgb, var(--color-danger, #00A8FF) 26%, transparent);
+  color: var(--color-danger, #00A8FF);
+  border-color: color-mix(in srgb, var(--color-danger, #00A8FF) 38%, transparent);
 }
 .skill-necessity-irrelevant {
-  background: color-mix(in srgb, var(--color-danger, #e06c75) 18%, transparent);
-  color: var(--color-danger, #e06c75);
+  background: color-mix(in srgb, var(--color-danger, #00A8FF) 18%, transparent);
+  color: var(--color-danger, #00A8FF);
 }
 .skill-duplicate-keep {
   background: color-mix(in srgb, var(--color-success, #4ade80) 22%, transparent);
   color: var(--color-success, #4ade80);
 }
 .skill-duplicate-lower {
-  background: color-mix(in srgb, var(--color-danger, #e06c75) 14%, transparent);
-  color: var(--color-danger, #e06c75);
+  background: color-mix(in srgb, var(--color-danger, #00A8FF) 14%, transparent);
+  color: var(--color-danger, #00A8FF);
 }
 .skill-stats {
   font-size: 9px;
@@ -15878,7 +15878,7 @@ body:not(.email-doc-split-active) #email-lib-modal.email-lib-fullscreen:not(.mod
 }
 .skill-verified { color: var(--accent, #4ade80); }
 .skill-teachermark { color: var(--color-warning, #f0ad4e); }
-.skill-needsmark { color: var(--color-danger, #e06c75); cursor: help; }
+.skill-needsmark { color: var(--color-danger, #00A8FF); cursor: help; }
 
 /* The card currently being processed by an "Audit now" run glows + pulses so
    it's obvious which one the audit is on. */
@@ -16086,7 +16086,7 @@ body:not(.email-doc-split-active) #email-lib-modal.email-lib-fullscreen:not(.mod
 .skill-test-tool  { color: var(--accent, var(--red)); opacity: 0.85; }
 .skill-test-out   { opacity: 0.7; padding-left: 10px; }
 .skill-test-say   { white-space: pre-wrap; }
-.skill-test-err   { color: var(--color-danger, #e06c75); }
+.skill-test-err   { color: var(--color-danger, #00A8FF); }
 .skill-eval-head  { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
 .skill-eval-badge {
   font-size: 10px; font-weight: 700; letter-spacing: 0.03em;
@@ -16094,7 +16094,7 @@ body:not(.email-doc-split-active) #email-lib-modal.email-lib-fullscreen:not(.mod
 }
 .skill-eval-ok   { background: color-mix(in srgb, var(--color-success, #4ade80) 26%, transparent); color: var(--color-success, #4ade80); }
 .skill-eval-warn { background: color-mix(in srgb, var(--color-warning, #f0ad4e) 26%, transparent); color: var(--color-warning, #f0ad4e); }
-.skill-eval-bad  { background: color-mix(in srgb, var(--color-danger, #e06c75) 26%, transparent); color: var(--color-danger, #e06c75); }
+.skill-eval-bad  { background: color-mix(in srgb, var(--color-danger, #00A8FF) 26%, transparent); color: var(--color-danger, #00A8FF); }
 .skill-eval-unknown { background: color-mix(in srgb, var(--fg) 14%, transparent); }
 .skill-eval-summary { font-size: 11px; opacity: 0.85; }
 .skill-eval-issues { margin: 6px 0 0; padding-left: 18px; font-size: 11px; opacity: 0.8; }
@@ -20081,10 +20081,10 @@ body.gallery-selecting .gallery-dl-btn,
   animation: cookbook-srv-glow-ok 2.4s ease-in-out infinite;
 }
 .cookbook-srv-status.fail {
-  background: var(--red, #e06c75);
+  background: var(--red, #00A8FF);
   box-shadow:
-    0 0 0 2px color-mix(in srgb, var(--red, #e06c75) 25%, transparent),
-    0 0 10px 2px color-mix(in srgb, var(--red, #e06c75) 55%, transparent);
+    0 0 0 2px color-mix(in srgb, var(--red, #00A8FF) 25%, transparent),
+    0 0 10px 2px color-mix(in srgb, var(--red, #00A8FF) 55%, transparent);
 }
 @keyframes cookbook-srv-pulse {
   0%, 100% { opacity: 0.45; }
@@ -20990,7 +20990,7 @@ body.gallery-selecting .gallery-dl-btn,
 
 /* Welcome name — left-to-right wipe with a touch of horizontal stretch.
    Fires on initial render via the .welcome-name rule; restarts on Nobody⇄
-   Odysseus toggle via JS reflow trick. */
+   RAVEN toggle via JS reflow trick. */
 .welcome-name {
   transform-origin: left center;
   animation: welcome-name-reveal 0.55s cubic-bezier(0.34, 1.32, 0.55, 1) both;
@@ -28190,7 +28190,7 @@ body.doc-find-active mark.doc-find-mark.current {
 .email-tag-marketing { background: rgba(244, 114, 182, 0.22); color: #f472b6; }
 .email-tag-notification { background: rgba(148, 163, 184, 0.22); color: #94a3b8; }
 .email-tag-security { background: rgba(248, 113, 113, 0.22); color: #f87171; }
-.email-tag-urgent { background: color-mix(in srgb, var(--color-error, #e06c75) 25%, transparent); color: var(--color-error, #e06c75); font-weight: 600; }
+.email-tag-urgent { background: color-mix(in srgb, var(--color-error, #00A8FF) 25%, transparent); color: var(--color-error, #00A8FF); font-weight: 600; }
 .email-tag-reply-soon { background: rgba(240, 173, 78, 0.22); color: #f0ad4e; }
 .email-tag-social { background: rgba(56, 189, 248, 0.22); color: #38bdf8; }
 .email-tag-shopping { background: rgba(236, 72, 153, 0.22); color: #ec4899; }
@@ -28382,11 +28382,11 @@ body.doc-find-active mark.doc-find-mark.current {
 }
 /* Launch-command Copy button morphs into Cancel once Launch has been clicked. */
 .hwfit-serve-copy.hwfit-serve-cancel {
-  border-color: var(--color-danger, #e06c75) !important;
-  color: var(--color-danger, #e06c75) !important;
+  border-color: var(--color-danger, #00A8FF) !important;
+  color: var(--color-danger, #00A8FF) !important;
 }
 .hwfit-serve-copy.hwfit-serve-cancel:hover {
-  background: color-mix(in srgb, var(--color-danger, #e06c75) 14%, transparent);
+  background: color-mix(in srgb, var(--color-danger, #00A8FF) 14%, transparent);
 }
 /* Email modal title unread badge — small accent pill next to "Email". */
 .email-lib-unread-badge {
@@ -30966,7 +30966,7 @@ body.notes-mobile-mode.notes-drag-mode .note-card-pin.active {
   font-size: 11px;
   padding: 0 10px 0 28px;
   background-color: var(--bg);
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23e06c75' stroke-opacity='0.85' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='11' cy='11' r='8'/><line x1='21' y1='21' x2='16.65' y2='16.65'/></svg>");
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2300A8FF' stroke-opacity='0.85' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='11' cy='11' r='8'/><line x1='21' y1='21' x2='16.65' y2='16.65'/></svg>");
   background-repeat: no-repeat;
   background-position: 9px center;
   border: 1px solid var(--border);
@@ -34828,7 +34828,7 @@ input.cp-swatch-input::selection { background: transparent; }
   font-family: ui-monospace, 'Fira Code', monospace;
   font-size: 12px; text-transform: lowercase;
 }
-.cp-hex:focus { outline: none; border-color: var(--red, #e06c75); }
+.cp-hex:focus { outline: none; border-color: var(--red, #00A8FF); }
 .cp-eyedropper {
   width: 26px; height: 26px;
   padding: 0;

@@ -506,19 +506,19 @@ def _oauth_authorize_page(auth_url: str, server_id: str, host: str) -> str:
     host = html.escape(host, quote=True)
     return f"""<!DOCTYPE html>
 <html><head>
-<meta charset="UTF-8"><title>Authorize — Odysseus</title>
+<meta charset="UTF-8"><title>Authorize — RAVEN</title>
 <style>
   body {{ font-family: 'Fira Code', monospace; background: #0f0f0f; color: #e0e0e0;
     display: flex; justify-content: center; align-items: center; min-height: 100vh; }}
   .card {{ background: #1a1a1a; border: 1px solid #333; border-radius: 12px;
     padding: 2rem; max-width: 480px; text-align: center; }}
-  h2 {{ color: #e06c75; margin-bottom: 0.5rem; font-size: 1.1rem; }}
+  h2 {{ color: #00A8FF; margin-bottom: 0.5rem; font-size: 1.1rem; }}
   p {{ color: #aaa; font-size: 0.82rem; line-height: 1.6; margin: 0.8rem 0; }}
   .step {{ text-align: left; color: #ccc; font-size: 0.82rem; line-height: 1.7; margin: 1rem 0; }}
-  .step b {{ color: #e06c75; }}
+  .step b {{ color: #00A8FF; }}
   a.auth-link {{
     display: inline-block; margin: 1rem 0; padding: 0.6rem 1.5rem;
-    background: #e06c75; color: #fff; text-decoration: none; border-radius: 6px;
+    background: #00A8FF; color: #fff; text-decoration: none; border-radius: 6px;
     font-weight: 600; font-size: 0.9rem;
   }}
   a.auth-link:hover {{ background: #c55; }}
@@ -527,10 +527,10 @@ def _oauth_authorize_page(auth_url: str, server_id: str, host: str) -> str:
     background: #0f0f0f; border: 1px solid #333; border-radius: 6px;
     color: #e0e0e0; font-family: 'Fira Code', monospace; font-size: 0.8rem;
   }}
-  input:focus {{ outline: none; border-color: #e06c75; }}
+  input:focus {{ outline: none; border-color: #00A8FF; }}
   button {{
     padding: 0.5rem 1.5rem; border: none; border-radius: 6px;
-    background: #e06c75; color: #fff; font-weight: 600; cursor: pointer;
+    background: #00A8FF; color: #fff; font-weight: 600; cursor: pointer;
     font-family: 'Fira Code', monospace; font-size: 0.85rem; margin-top: 0.3rem;
   }}
   button:hover {{ background: #c55; }}
@@ -558,7 +558,7 @@ def _oauth_result_page(title: str, message: str, success: bool = False) -> str:
     """Generate a simple HTML page for the OAuth result."""
     safe_title = html.escape(title)
     safe_message = html.escape(message)
-    color = "#00661a" if success else "#e06c75"
+    color = "#00661a" if success else "#00A8FF"
     icon = "&#10003;" if success else "&#10007;"
     return f"""<!DOCTYPE html>
 <html><head>

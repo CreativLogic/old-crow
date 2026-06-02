@@ -319,7 +319,7 @@ async def action_run_script(owner: str, script: str = "", host: str = "", **kwar
     """Run a script locally, or via SSH when a host is configured."""
     if not script:
         return "No script specified", False
-    target_host = (host or os.getenv("ODYSSEUS_SCRIPT_HOST", "localhost")).strip()
+    target_host = (host or os.getenv("RAVEN_SCRIPT_HOST", "localhost")).strip()
     if target_host in ("", "localhost", "127.0.0.1", "local"):
         if IS_WINDOWS and find_bash():
             return await _run_subprocess([find_bash(), "-c", script], timeout=300, label="Script")
@@ -523,7 +523,7 @@ async def action_draft_email_replies(owner: str, **kwargs) -> Tuple[str, bool]:
 _TYPE_COLORS = {
     "work":     "#5b8abf",  # blue
     "personal": "#a07ae0",  # purple
-    "health":   "#e06c75",  # red
+    "health":   "#00A8FF",  # red
     "travel":   "#e5a33a",  # orange
     "meal":     "#d8b974",  # tan
     "social":   "#82c882",  # green
@@ -1744,12 +1744,12 @@ async def action_check_email_urgency(owner: str, **kwargs) -> Tuple[str, bool]:
                             if not raw:
                                 continue
                             msg = _email_mod.message_from_bytes(raw)
-                            # Skip Odysseus-generated reminders so the scanner
+                            # Skip RAVEN-generated reminders so the scanner
                             # doesn't classify its own emails as urgent and
                             # trigger a feedback loop. Match on either the
                             # stamped headers OR the subject prefix.
-                            _ody_origin = (msg.get("X-Odysseus-Origin") or "").strip().lower()
-                            _ody_kind = (msg.get("X-Odysseus-Kind") or "").strip().lower()
+                            _ody_origin = (msg.get("X-RAVEN-Origin") or "").strip().lower()
+                            _ody_kind = (msg.get("X-RAVEN-Kind") or "").strip().lower()
                             _raw_subj = (msg.get("Subject") or "").lower()
                             # MCP path drops custom headers (email_server's
                             # schema doesn't accept them), so we ALSO match the
@@ -1757,8 +1757,8 @@ async def action_check_email_urgency(owner: str, **kwargs) -> Tuple[str, bool]:
                             # always stamps. Anything that looks self-generated
                             # is dropped before classification to prevent the
                             # scanner from labelling its own emails "urgent".
-                            if (_ody_origin == "odysseus-ui" or _ody_kind == "reminder"
-                                    or _raw_subj.startswith("reminder (odysseus):")
+                            if (_ody_origin == "raven-ui" or _ody_kind == "reminder"
+                                    or _raw_subj.startswith("reminder (raven):")
                                     or _raw_subj.startswith("reminder:")
                                     or _raw_subj.startswith("[task]")):
                                 # Drop this candidate entirely — don't list it
@@ -2046,7 +2046,7 @@ async def action_check_email_urgency(owner: str, **kwargs) -> Tuple[str, bool]:
             # one — so the reminder email tells you which messages to act on,
             # not just "4 needing reply". Optional deep-link when the user has
             # `app_public_url` configured in Settings (so the email row links
-            # straight into the Odysseus Email tab).
+            # straight into the RAVEN Email tab).
             # Sort: highest-scored UIDs first; cap at 10 to keep the email tidy.
             sorted_urgent = sorted(
                 ((k, per_uid_scores[k]) for k in urgent_keys),
@@ -2224,7 +2224,7 @@ BUILTIN_ACTION_INFO = {
     "mark_email_boundaries": "LLM-detect signature & quoted-reply offsets in new emails; cached so future renders fold without further LLM calls",
     "learn_sender_signatures": "LLM learns each sender's signature from 3+ of their recent emails; cached per address so future renders fold sigs reliably without heuristics",
     "ssh_command": "Run a shell command on a local or remote host",
-    "run_script": "Run a script locally or on ODYSSEUS_SCRIPT_HOST",
+    "run_script": "Run a script locally or on RAVEN_SCRIPT_HOST",
     "test_skills": "Run the per-skill Test on every skill: agent run + LLM judge → records verdict on the skill (pass/needs_work/fail/inconclusive). Advisory only — never rewrites or demotes anything.",
     "audit_skills": "Audit unaudited skills after enough new skills are added: test, narrow metadata, self-edit/retry, optional teacher rewrite, tag duplicates/trivial skills, and publish/draft using the auto-approve threshold.",
     "check_email_urgency": "Scan unread emails hourly, tag urgent/reply-soon/newsletter/marketing/spam, and send a reminder when a new email needs a fast reply.",

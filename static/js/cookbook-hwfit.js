@@ -1319,7 +1319,7 @@ export function _hwfitInit() {
     // empty (see above), which made the rebuilt list temporarily miss the
     // selected server. The old code then "fell back" to the first remote server
     // and persisted it, silently flipping the active host even though the
-    // dropdown still showed odysseus. The user's selection must only change via
+    // dropdown still showed raven. The user's selection must only change via
     // an explicit dropdown pick. Here we just refresh env/path if we can match
     // the current host; otherwise leave remoteHost untouched.
     const sel = _envState.servers.find(s => s.host === _envState.remoteHost);
@@ -1369,12 +1369,12 @@ export function _hwfitInit() {
         dot.className = 'cookbook-srv-status fail';
         const err = (data.stderr || data.stdout || `exit ${data.exit_code}`).toString().trim().slice(0, 240);
         dot.title = `SSH failed: ${err}`;
-        setMsg(`Failed · ${err}`, 'var(--red,#e06c75)');
+        setMsg(`Failed · ${err}`, 'var(--red,#00A8FF)');
       }
     } catch (e) {
       dot.className = 'cookbook-srv-status fail';
       dot.title = `Test failed: ${e.message || e}`;
-      setMsg(`Failed · ${e.message || e}`, 'var(--red,#e06c75)');
+      setMsg(`Failed · ${e.message || e}`, 'var(--red,#00A8FF)');
     }
   }
 
