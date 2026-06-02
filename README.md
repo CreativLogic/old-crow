@@ -1,9 +1,10 @@
-# Odysseus
+# RAVEN
 ───────────────────────────────────────────────
- ⊹ ࣪ ˖ ૮( ˶ᵔ ᵕ ᵔ˶ )っ  Odysseus vers. 1.0
+ -->  RAVEN V-1.0
 ───────────────────────────────────────────────
+<img width="1024" height="1024" alt="Raven_AIOS" src="https://github.com/user-attachments/assets/235fa737-9dbc-4db1-b5d4-f2f9376eb51a" />
 
-![Odysseus](docs/odysseus.jpg)
+![RAVEN](docs/odysseus.jpg)
 
 A self-hosted AI workspace -- meant to be the self-hosted version of the UI experience you get from ChatGPT and Claude. But with more jank and fun. Running on your own hardware, with your own data -- local-first, privacy-first, and no trojan.
 
@@ -240,16 +241,16 @@ do not run on macOS. MLX-only models are not served by Odysseus.
 server; safe to re-run):
 
 ```powershell
-git clone https://github.com/pewdiepie-archdaemon/odysseus.git
-cd odysseus
+git clone https://github.com/CreativLogic/RAVEN.git
+cd RAVEN
 powershell -ExecutionPolicy Bypass -File .\launch-windows.ps1
 ```
 
 Or do it by hand:
 
 ```powershell
-git clone https://github.com/pewdiepie-archdaemon/odysseus.git
-cd odysseus
+git clone https://github.com/CreativLogic/RAVEN.git
+cd RAVEN
 py -3.11 -m venv venv
 venv\Scripts\Activate.ps1
 pip install -r requirements.txt
@@ -301,7 +302,7 @@ Common internal-only ports from the default docs/compose setup:
 
 | Port | Service |
 |---|---|
-| `7000` | Odysseus raw app port |
+| `7000` | RAVEN raw app port |
 | `8080` | SearXNG |
 | `8091` | ntfy |
 | `8100` | ChromaDB host port for manual/compose access |
