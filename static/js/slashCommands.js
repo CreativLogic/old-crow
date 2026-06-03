@@ -2246,7 +2246,7 @@ async function _cmdDemo(args, ctx) {
   }
 
   _clearTour();
-  await typewriterReply('RAVEN is yours to explore, enjoy the voyage!');
+  await typewriterReply('RAVEN is yours to explore, give your soul wings!');
   return true;
 }
 
