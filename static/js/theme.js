@@ -327,30 +327,26 @@ const _ROUTE_FAVICON_SHAPES = {
 };
 
 function _updateFavicon(fg) {
-  const path = (window.location.pathname || '').toLowerCase();
+  const path = (window.location.pathname || "").toLowerCase();
   const routeShape = _ROUTE_FAVICON_SHAPES[path];
-  let svg;
   if (routeShape) {
-    svg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'>${routeShape.split('__C__').join(fg)}</svg>`;
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">${routeShape.split("__C__").join(fg)}</svg>`;
+    const href = "data:image/svg+xml," + encodeURIComponent(svg);
+    let link = document.querySelector("link[rel='icon']");
+    if (!link) { link = document.createElement("link"); link.rel = "icon"; link.type = "image/svg+xml"; document.head.appendChild(link); }
+    link.href = href;
+    let apple = document.querySelector("link[rel='apple-touch-icon']");
+    if (!apple) { apple = document.createElement("link"); apple.rel = "apple-touch-icon"; document.head.appendChild(apple); }
+    apple.href = href;
   } else {
-    svg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path d='M6 18 Q4 10 12 5 Q15 2 20 4 L28 2 L23 8 Q28 10 26 14 Q23 17 19 18 Q15 22 12 28 L10 20 Q7 18 6 18Z' fill='${fg}'/><circle cx='17' cy='9' r='1.5' fill='var(--bg, #0D1B2A)'/>/></svg>`;
+    let link = document.querySelector("link[rel='icon']");
+    if (!link) { link = document.createElement("link"); link.rel = "icon"; document.head.appendChild(link); }
+    link.type = "image/png";
+    link.href = "/static/raven-logo.png";
+    let apple = document.querySelector("link[rel='apple-touch-icon']");
+    if (!apple) { apple = document.createElement("link"); apple.rel = "apple-touch-icon"; document.head.appendChild(apple); }
+    apple.href = "/static/raven-logo.png";
   }
-  const href = 'data:image/svg+xml,' + encodeURIComponent(svg);
-  let link = document.querySelector("link[rel='icon']");
-  if (!link) {
-    link = document.createElement('link');
-    link.rel = 'icon';
-    link.type = 'image/svg+xml';
-    document.head.appendChild(link);
-  }
-  link.href = href;
-  let apple = document.querySelector("link[rel='apple-touch-icon']");
-  if (!apple) {
-    apple = document.createElement('link');
-    apple.rel = 'apple-touch-icon';
-    document.head.appendChild(apple);
-  }
-  apple.href = href;
 }
 
 // Cache of discovered custom fonts: { "Family Name": [ {file, url, format} ] }
