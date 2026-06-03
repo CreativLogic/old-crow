@@ -523,7 +523,7 @@ async def action_draft_email_replies(owner: str, **kwargs) -> Tuple[str, bool]:
 _TYPE_COLORS = {
     "work":     "#5b8abf",  # blue
     "personal": "#a07ae0",  # purple
-    "health":   "#00A8FF",  # red
+    "health":   "#8B5CF6",  # red
     "travel":   "#e5a33a",  # orange
     "meal":     "#d8b974",  # tan
     "social":   "#82c882",  # green

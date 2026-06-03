@@ -31,7 +31,7 @@ export const CAL_COLORS = [
   { name: 'custom',  hex: 'custom' },
 ];
 
-export const _CAL_CUSTOM_GRADIENT = 'conic-gradient(from 0deg, #00A8FF, #d19a66, #e5c07b, #98c379, #61afef, #c678dd, #00A8FF)';
+export const _CAL_CUSTOM_GRADIENT = 'conic-gradient(from 0deg, #8B5CF6, #d19a66, #e5c07b, #98c379, #61afef, #c678dd, #8B5CF6)';
 
 // Per-event-type accent palette. Used by the colored dots in month/year
 // grids and the chip stripe behind agenda rows.
@@ -39,7 +39,7 @@ export const _TYPE_PALETTE = {
   '!':      '#e5a33a',  // important — amber, less harsh than red
   work:     '#5b8abf',
   personal: '#a07ae0',
-  health:   '#00A8FF',
+  health:   '#8B5CF6',
   travel:   '#e5a33a',
   meal:     '#d8b974',
   social:   '#82c882',

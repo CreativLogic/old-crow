@@ -293,7 +293,7 @@ const COLORS = [
   { name: 'custom',  value: 'custom' },  // sentinel — clicking opens native color picker
 ];
 
-const _CUSTOM_GRADIENT = 'conic-gradient(from 0deg, #00A8FF, #d19a66, #e5c07b, #98c379, #61afef, #c678dd, #00A8FF)';
+const _CUSTOM_GRADIENT = 'conic-gradient(from 0deg, #8B5CF6, #d19a66, #e5c07b, #98c379, #61afef, #c678dd, #8B5CF6)';
 
 // A note's color is one of: '' (none), a preset name (red/orange/…), or a
 // sentinel "bg:<image-url>" for a custom background image uploaded by the user.

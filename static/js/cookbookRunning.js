@@ -2887,7 +2887,7 @@ function _syncSettingsServerDots(byKey) {
     if (failed) {
       msg.textContent = 'Server not responding';
       msg.title = 'Server not responding - running serve may have crashed';
-      msg.style.color = 'var(--red,#00A8FF)';
+      msg.style.color = 'var(--red,#8B5CF6)';
       msg.style.opacity = '0.75';
     } else if (/failed|crashed|not responding|unreachable/i.test(msg.textContent || '')) {
       msg.textContent = 'Reachable';

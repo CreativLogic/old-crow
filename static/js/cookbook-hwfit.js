@@ -1369,12 +1369,12 @@ export function _hwfitInit() {
         dot.className = 'cookbook-srv-status fail';
         const err = (data.stderr || data.stdout || `exit ${data.exit_code}`).toString().trim().slice(0, 240);
         dot.title = `SSH failed: ${err}`;
-        setMsg(`Failed · ${err}`, 'var(--red,#00A8FF)');
+        setMsg(`Failed · ${err}`, 'var(--red,#8B5CF6)');
       }
     } catch (e) {
       dot.className = 'cookbook-srv-status fail';
       dot.title = `Test failed: ${e.message || e}`;
-      setMsg(`Failed · ${e.message || e}`, 'var(--red,#00A8FF)');
+      setMsg(`Failed · ${e.message || e}`, 'var(--red,#8B5CF6)');
     }
   }
 
