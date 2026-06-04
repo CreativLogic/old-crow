@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import logging
+import os
 from typing import Optional, Set
 
 logger = logging.getLogger(__name__)
@@ -55,7 +56,15 @@ def is_public_blocked_tool(tool_name: Optional[str]) -> bool:
 
 
 def owner_is_admin_or_single_user(owner: Optional[str]) -> bool:
-    """Return True for admins, or when auth is not configured yet."""
+    """Return True for admins, or when auth is not configured yet.
+    
+    Also returns True when RAVEN_SINGLE_USER=true (self-hosted instances)
+    or when the owner is connecting from localhost without auth.
+    """
+    # Self-hosted single-user mode — bypass all tool restrictions
+    if os.environ.get("RAVEN_SINGLE_USER", "").lower() == "true":
+        return True
+
     try:
         from core.auth import AuthManager
 
