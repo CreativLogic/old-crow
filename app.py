@@ -118,6 +118,7 @@ REQUEST_HARD_TIMEOUT = float(os.getenv("REQUEST_HARD_TIMEOUT", "45"))
 _TIMEOUT_EXEMPT_PREFIXES = (
     "/api/chat",            # streaming
     "/api/shell/stream",    # SSE
+    "/api/terminal",        # WebSocket PTY
     "/api/research",        # multi-minute jobs
     "/api/model/download",  # tmux setup may run pip installs
     "/api/model/probe",     # SSE; iterates models with up to 8s timeout each
@@ -632,6 +633,14 @@ app.include_router(setup_shell_routes())
 # Cookbook (model download/serve/cache, cookbook state sync)
 from routes.cookbook_routes import setup_cookbook_routes
 app.include_router(setup_cookbook_routes())
+
+# Terminal (xterm.js WebSocket PTY)
+from routes.terminal_routes import setup_terminal_routes
+app.include_router(setup_terminal_routes())
+
+# Stack (tool/app stack management)
+from routes.stack_routes import setup_stack_routes
+app.include_router(setup_stack_routes())
 
 # Hardware model fitting (cookbook "What Fits?" tab)
 from routes.hwfit_routes import setup_hwfit_routes

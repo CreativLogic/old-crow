@@ -342,10 +342,10 @@ function _updateFavicon(fg) {
     let link = document.querySelector("link[rel='icon']");
     if (!link) { link = document.createElement("link"); link.rel = "icon"; document.head.appendChild(link); }
     link.type = "image/png";
-    link.href = "/static/raven-logo.png";
+    link.href = "/static/RAVEN_AIOS_FINAL_LOGO.jpg";
     let apple = document.querySelector("link[rel='apple-touch-icon']");
     if (!apple) { apple = document.createElement("link"); apple.rel = "apple-touch-icon"; document.head.appendChild(apple); }
-    apple.href = "/static/raven-logo.png";
+    apple.href = "/static/RAVEN_AIOS_FINAL_LOGO.jpg";
   }
 }
 
