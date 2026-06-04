@@ -34,6 +34,8 @@ New "Home" rail button that opens a live dashboard with cards:
 - [ ] Reminders visible (next 3)
 - [ ] Bundled workflows (top 5 most-used)
 - [ ] Pomodoro timer (set time, global ticker visible in any tab)
+- [ ] **Free drag & drop**: Cards freely movable by dragging anywhere on screen
+- [ ] **6 cards per window**: Allow up to 6 cards visible in a single dashboard view
 
 ### Onboarding Flow
 - [ ] Welcome screen: asks for user's preferred name
