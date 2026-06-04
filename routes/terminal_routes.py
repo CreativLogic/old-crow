@@ -57,11 +57,19 @@ async def terminal_ws(websocket: WebSocket) -> None:
         pid, fd = pty.fork()
 
         if pid == 0:
-            # Child process — launch shell
+            # Child process — launch shell in RAVEN's home directory
             os.environ.setdefault("TERM", "xterm-256color")
             os.environ.setdefault("COLORTERM", "truecolor")
             os.environ.setdefault("HOME", os.path.expanduser("~"))
-            # Inherit the user's PATH
+            os.environ.setdefault("RAVEN_URL", "http://localhost:7000")
+            # Add raven CLI to PATH
+            path = os.environ.get("PATH", "")
+            local_bin = os.path.expanduser("~/.local/bin")
+            if local_bin not in path:
+                os.environ["PATH"] = f"{local_bin}:{path}"
+            # Start in RAVEN project directory
+            raven_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+            os.chdir(raven_dir)
             os.execve(shell_cmd, [shell_cmd], os.environ)
             os._exit(1)
 

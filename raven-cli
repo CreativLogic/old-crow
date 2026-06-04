@@ -1,0 +1,128 @@
+#!/usr/bin/env python3
+"""
+raven — Natural language bridge to RAVEN's AI agent from any terminal.
+
+Usage:
+    raven "summarize the last 3 commits"
+    raven "what files are taking the most disk space?"
+    raven "find all TODO comments and create a task list"
+    raven --model deepseek "explain this codebase"
+
+The agent has access to your filesystem, shell, and RAVEN's tools.
+Output streams in real-time, just like talking to Claude Code or Codex.
+"""
+
+import argparse
+import json
+import os
+import sys
+import urllib.request
+import urllib.error
+
+
+def get_raven_url():
+    """Get RAVEN base URL from env or default."""
+    return os.environ.get("RAVEN_URL", "http://localhost:7000")
+
+
+def get_api_key():
+    """Get RAVEN API key from env."""
+    return os.environ.get("RAVEN_API_KEY", "")
+
+
+def stream_response(raven_url, prompt, model=None, api_key=None):
+    """Send a prompt to RAVEN's CLI agent endpoint and stream the response."""
+    url = f"{raven_url}/api/cli/chat"
+
+    payload = {
+        "message": prompt,
+    }
+
+    if model:
+        payload["model"] = model
+
+    headers = {
+        "Content-Type": "application/json",
+    }
+    if api_key:
+        headers["X-API-Key"] = api_key
+
+    req = urllib.request.Request(
+        url,
+        data=json.dumps(payload).encode(),
+        headers=headers,
+    )
+
+    try:
+        with urllib.request.urlopen(req) as response:
+            # Stream NDJSON response
+            for line in response:
+                line = line.decode("utf-8", errors="replace").strip()
+                if not line:
+                    continue
+                try:
+                    data = json.loads(line)
+                    if data.get("done"):
+                        break
+                    if data.get("error"):
+                        print(f"\n[Error]: {data['error']}", file=sys.stderr)
+                        sys.exit(1)
+                    content = data.get("content", "")
+                    if content:
+                        sys.stdout.write(content)
+                        sys.stdout.flush()
+                except json.JSONDecodeError:
+                    # Raw text
+                    sys.stdout.write(line)
+                    sys.stdout.flush()
+
+    except urllib.error.HTTPError as e:
+        body = e.read().decode("utf-8", errors="replace")
+        print(f"\n[RAVEN error {e.code}]: {body}", file=sys.stderr)
+        sys.exit(1)
+    except urllib.error.URLError as e:
+        print(f"\n[RAVEN unreachable]: {e.reason}", file=sys.stderr)
+        print(f"Is RAVEN running at {raven_url}?", file=sys.stderr)
+        sys.exit(1)
+
+    print()  # Final newline
+
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="Natural language bridge to RAVEN's AI agent",
+        epilog="Set RAVEN_URL and RAVEN_API_KEY environment variables for persistent config.",
+    )
+    parser.add_argument(
+        "prompt",
+        nargs="+",
+        help="Your natural language prompt for the agent",
+    )
+    parser.add_argument(
+        "--model", "-m",
+        default=None,
+        help="Model to use (default: RAVEN default)",
+    )
+    parser.add_argument(
+        "--url",
+        default=None,
+        help=f"RAVEN URL (default: $RAVEN_URL or http://localhost:7000)",
+    )
+    parser.add_argument(
+        "--key",
+        default=None,
+        help="RAVEN API key (default: $RAVEN_API_KEY)",
+    )
+
+    args = parser.parse_args()
+
+    raven_url = args.url or get_raven_url()
+    api_key = args.key or get_api_key()
+    prompt = " ".join(args.prompt)
+    model = args.model
+
+    stream_response(raven_url, prompt, model, api_key)
+
+
+if __name__ == "__main__":
+    main()

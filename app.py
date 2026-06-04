@@ -650,6 +650,10 @@ app.include_router(setup_hwfit_routes())
 from routes.compare_routes import setup_compare_routes
 app.include_router(setup_compare_routes(session_manager))
 
+# CLI (terminal-based agent chat)
+from routes.cli_routes import setup_cli_routes
+app.include_router(setup_cli_routes(session_manager, session_config, webhook_manager=webhook_manager))
+
 # User Preferences
 from routes.prefs_routes import setup_prefs_routes
 app.include_router(setup_prefs_routes())
