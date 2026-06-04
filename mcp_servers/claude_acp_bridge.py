@@ -32,6 +32,8 @@ async def _get_acp():
     if _acp_process is None or _acp_process.poll() is not None:
         _acp_process = await asyncio.create_subprocess_exec(
             "claude-agent-acp",
+            "--acp",
+            "--stdio",
             stdin=asyncio.subprocess.PIPE,
             stdout=asyncio.subprocess.PIPE,
             stderr=asyncio.subprocess.PIPE,
@@ -96,6 +98,8 @@ async def call_tool(name: str, arguments: dict) -> list[TextContent]:
             # We communicate via STDIO — for simplicity, use subprocess per-request
             proc = await asyncio.create_subprocess_exec(
                 "claude-agent-acp",
+                "--acp",
+                "--stdio",
                 stdin=asyncio.subprocess.PIPE,
                 stdout=asyncio.subprocess.PIPE,
                 stderr=asyncio.subprocess.PIPE,
