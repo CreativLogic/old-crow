@@ -124,3 +124,22 @@
 ### Claude ACP Bridge Fix
 - Added missing `--acp --stdio` flags to subprocess spawns
 - Was spawning `claude-agent-acp` without ACP mode — Claude access was broken
+
+
+---
+
+## 2026-06-04 (Planned — Overnight) — Bugs, Home Dashboard, Onboarding
+
+### Bug Fixes Planned
+- Theme color picker glitching in advanced section
+- Theme coverage gaps (need SVG transparent logo variant)
+- Missing theme controls: button bg/text, section text colors, scrollbar
+- Card text bump to 16px universally
+- Sidebar username font size increase
+- Cards closing themselves + sections not snapping
+- Notes editor: bold/italic/bullets/links/text size control + markdown mode
+
+### Features Planned
+- **Home Dashboard**: New sidebar tab with token usage, priority tasks, weekly goal progress, reminders, workflows, Pomodoro timer
+- **Onboarding**: Welcome screen (name + hourly rate calculator)
+- **File System**: File access + markdown editor with file tree

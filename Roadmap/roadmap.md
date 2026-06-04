@@ -88,3 +88,33 @@ style.css is 36,000 lines. Needs full audit and deduplication pass.
 - First-run setup improvements
 - Backup/restore guide
 - Vendor CDN assets for fully offline mode
+
+
+---
+
+## TONIGHT — June 4, 2026 🔥
+
+### Bugs
+- **Theme color picker glitching**: Advanced color selection freezes, cards self-close
+- **Theme coverage gaps**: Some areas don't apply theme colors. Need SVG transparent logo variant
+- **Missing theme controls**: Button bg/text, section-specific text colors, scrollbar color
+- **Card text too small**: All cards need bump to ~16px (matching chat input size)
+- **Username too small**: Sidebar logged-in username needs size increase
+- **Layout glitches**: Cards closing themselves, sections not snapping, modal positioning fragile
+- **Notes editor**: Missing bold/italic/bullets/links/text size and markdown mode
+
+### Onboarding
+- Welcome screen: ask preferred name, hourly rate slider ($0-$5k), calculate savings
+- Savings calculator: tasks_completed × time_saved × hourly_rate → dashboard display
+
+### Home Dashboard
+- New sidebar tab with live cards: token usage, 3 priority tasks, weekly goal progress bar, tasks completed, reminders, top 5 workflows, Pomodoro timer (global ticker)
+
+### Quick UI Fixes
+- Add scrollbar color to theme advanced options
+- Add button bg/text color to theme advanced options  
+- Add section-specific text color targeting
+- Bump all card text to 16px universally
+- Sidebar username font size increase
+
+> Detailed checklist: `Roadmap/TONIGHT.md`
