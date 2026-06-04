@@ -98,3 +98,29 @@
 - 41 skills installed
 - 5-agent team scaffolded (Brandy, Dev, Leo, Draper, Mark)
 - Workspace: `/home/vinfamous/AIOS/Social-Patter` established
+
+---
+
+## 2026-06-04 — CLI Bridge + IDE Terminal
+
+### raven CLI Command
+- **raven-cli**: Python CLI that sends natural language to RAVEN's agent from any terminal
+- Installed to `~/.local/bin/raven`, added to PATH in `.bashrc`
+- Streams NDJSON responses from `/api/cli/chat` endpoint
+- Usage: `raven "fix the CSS"` or `raven --model deepseek "explain code"`
+
+### CLI Agent Endpoint
+- **routes/cli_routes.py**: Dedicated `/api/cli/chat` POST endpoint
+- Uses persistent CLI session (`cli-terminal`) so context builds across calls
+- Auto-selects first available model endpoint if none configured
+- Returns NDJSON streaming response
+
+### Terminal Integration Improvements
+- Terminal now spawns in RAVEN project directory (`os.chdir(raven_dir)`)
+- Sets `RAVEN_URL=http://localhost:7000` in terminal env
+- Adds `~/.local/bin` to PATH so `raven` command is available
+- Agent already has `bash` tool — can run shell commands with full filesystem access
+
+### Claude ACP Bridge Fix
+- Added missing `--acp --stdio` flags to subprocess spawns
+- Was spawning `claude-agent-acp` without ACP mode — Claude access was broken
